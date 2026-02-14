@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Analyzer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<canvas id="matrix"></canvas>
+<div class="bg-vignette"></div>
+
+<main class="app">
+    <header class="title-block">
+        <h1>PHISHING ANALYZER</h1>
+        <p>v5.0 // ADVANCED THREAT DETECTION SYSTEM</p>
+    </header>
+
+    <section class="card input-card">
+        <div class="card-label">&gt; ENTER URL FOR CYBER THREAT ANALYSIS</div>
+        <div class="input-row">
+            <input
+                id="inputUrl"
+                type="text"
+                placeholder="https://example.com/login?verify=account"
+                autocomplete="off"
+            >
+            <button id="scanBtn" type="button">INITIATE SCAN</button>
+        </div>
+        <div class="controls-row">
+            <label class="switch-label">
+                <input type="checkbox" id="hackerModeToggle">
+                <span>Enable hacker mode</span>
+            </label>
+            <button id="whyToggleBtn" class="ghost-btn" type="button">WHY THIS IS PHISHING?</button>
+        </div>
+        <div id="scanTerminal" class="scan-terminal" aria-live="polite"></div>
+    </section>
+
+    <section class="card result-card risk-neutral" id="resultPanel">
+        <div class="card-label">&gt; ANALYSIS RESULTS</div>
+        <div class="metrics">
+            <div class="metric-left">
+                <div class="metric-title">RISK LEVEL</div>
+                <div id="riskLevel" class="risk-text neutral">AWAITING INPUT</div>
+            </div>
+            <div class="metric-right">
+                <div class="metric-title">THREAT SCORE</div>
+                <div id="scoreValue" class="score-text">0%</div>
+            </div>
+        </div>
+
+        <div class="meter-wrap">
+            <div id="riskMeter" class="risk-meter-bar"></div>
+        </div>
+
+        <div class="indicators-title">DETECTED INDICATORS:</div>
+        <ul id="indicators" class="indicators">
+            <li>No scan run yet.</li>
+        </ul>
+
+        <div id="learningPanel" class="learning-panel hidden"></div>
+    </section>
+
+    <section class="grid-two">
+        <section class="card report-card">
+            <div class="card-label">&gt; ADVANCED URL CHECKS</div>
+            <ul id="checkList" class="check-list">
+                <li>Waiting for scan...</li>
+            </ul>
+        </section>
+
+        <section class="card preview-card">
+            <div class="card-label">&gt; WEBSITE PREVIEW SIMULATOR</div>
+            <div class="fake-browser">
+                <div class="browser-head">
+                    <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                    <span id="previewAddress" class="address">about:blank</span>
+                </div>
+                <div class="browser-body">
+                    <div><strong>Domain:</strong> <span id="previewDomain">-</span></div>
+                    <div><strong>Protocol:</strong> <span id="previewProtocol">-</span></div>
+                    <div><strong>Estimated impersonation:</strong> <span id="previewBrand">Unknown</span></div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <section class="grid-two">
+        <section class="card history-card">
+            <div class="card-label">&gt; THREAT HISTORY (LAST 10)</div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>URL</th>
+                            <th>Score</th>
+                            <th>Result</th>
+                            <th>Time</th>
+                        </tr>
+                    </thead>
+                    <tbody id="historyBody">
+                        <tr><td colspan="4">No scans yet.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="card tips-card">
+            <div class="card-label">&gt; CYBERSECURITY AWARENESS TIP</div>
+            <p id="tipText" class="tip-text">Run a scan to receive a security awareness tip.</p>
+        </section>
+    </section>
+</main>
+
+<script src="analysis.js"></script>
+<script src="storage.js"></script>
+<script src="ui.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
